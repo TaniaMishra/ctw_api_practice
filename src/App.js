@@ -18,11 +18,11 @@ function App() {
 
   async function addStudentHandler(firstName, lastName, birthDate, phone, email) {
     const newStudent = {
-      firstName: firstName,
-      lastName: lastName,
-      birthDate: birthDate,
-      phoneNumber: phone,
-      email: email,
+      studentFirstName: firstName,
+      studentLastName: lastName,
+      studentDateOfBirth: birthDate,
+      studentHomePhone: phone,
+      studentEMail: email,
       id: Math.random().toString(),
       active: true
     };

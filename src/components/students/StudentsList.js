@@ -18,10 +18,10 @@ const StudentsList = props => {
             <ul className="students">
                 {activeStudents.map(student =>
                     <li key={student.id}>
-                        <p>{student.lastName}, {student.firstName}</p>
-                        <p>Date of Birth: {student.birthDate}</p>
-                        <p>Email: {student.email}</p>
-                        <p>Phone Number: {student.phoneNumber}</p>
+                        <p>{student.studentLastName}, {student.studentFirstName}</p>
+                        <p>Date of Birth: {student.studentDateofBirth}</p>
+                        <p>Email: {student.studentEmail}</p>
+                        <p>Phone Number: {student.studentHomePhone}</p>
                         <Button clickHandler={deleteHandler} value={student.id}>Delete</Button>
                     </li>
                 )}

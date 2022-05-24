@@ -7,11 +7,10 @@ const baseURL = "https://dev-lead2change-ctw.azurewebsites.net/example/";
  * @returns An array of students.
  */
 export const getStudents = async () => {
-  const response = await fetch(baseURL + 'getstudents', {
-    mode: 'no-cors'
-  });
+  const response = await fetch(baseURL + 'getstudents');
+  console.log(response);
   const parsedResponse = await parseFetchResponse(response);
-  return parsedResponse.students;
+  return parsedResponse;
 };
 
 // /**
