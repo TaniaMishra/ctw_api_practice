@@ -1,12 +1,17 @@
-const baseURL = "https://dev-lead2change-ctw.azurewebsites.net/Students/example/";
+import { parseFetchResponse } from './parse-fetch-response.js';
+
+const baseURL = "https://dev-lead2change-ctw.azurewebsites.net/example/";
 
 /**
  * It makes a request to the server, parses the response, and returns the students
  * @returns An array of students.
  */
 export const getStudents = async () => {
-  const response = await fetch(baseURL + 'getstudents');
-  return await response.json();
+  const response = await fetch(baseURL + 'getstudents', {
+    mode: 'no-cors'
+  });
+  const parsedResponse = await parseFetchResponse(response);
+  return parsedResponse.students;
 };
 
 // /**
