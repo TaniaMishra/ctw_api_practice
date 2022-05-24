@@ -1,11 +1,22 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import AddStudent from "./components/students/AddStudent.js"
 import StudentsList from "./components/students/StudentsList.js"
+import {getStudents} from './services.js';
 
 function App() {
   const [studentsList, setStudentsList] = useState([]);
 
-    function addStudentHandler(firstName, lastName, birthDate, phone, email) {
+  useEffect(() => {
+    refreshStudents();
+  }, []);
+
+  const refreshStudents = async () => {
+    const response = await getStudents();
+    console.log(response);
+    setStudentsList(response);
+  };
+
+  async function addStudentHandler(firstName, lastName, birthDate, phone, email) {
     const newStudent = {
       firstName: firstName,
       lastName: lastName,
