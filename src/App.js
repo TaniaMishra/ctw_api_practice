@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import AddStudent from "./components/students/AddStudent.js"
 import StudentsList from "./components/students/StudentsList.js"
-import {getStudents} from './services.js';
+import {getStudents, addStudent} from './services.js';
 
 function App() {
   const [studentsList, setStudentsList] = useState([]);
@@ -20,15 +20,17 @@ function App() {
     const newStudent = {
       studentFirstName: firstName,
       studentLastName: lastName,
-      studentDateOfBirth: birthDate,
+      studentDateOfBirth: new Date(2020, 2, 20),
       studentHomePhone: phone,
-      studentEMail: email,
-      id: Math.random().toString(),
+      studentEmail: email,
       active: true
     };
-    setStudentsList((prevStudentsList) => {
-      return [...prevStudentsList, newStudent];
-    });
+
+    addStudent(newStudent);
+    refreshStudents();
+    // setStudentsList((prevStudentsList) => {
+    //   return [...prevStudentsList, newStudent];
+    // });
   }
 
   function deleteStudentHandler(studentId) {

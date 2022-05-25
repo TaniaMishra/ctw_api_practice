@@ -13,20 +13,18 @@ export const getStudents = async () => {
   return parsedResponse;
 };
 
-// /**
-//  * It makes a POST request to the /api/users endpoint, and returns the user object
-//  * that was created
-//  * @returns The user object
-//  */
-// export const addUser = async ({ name, active }) => {
-//   const response = await fetch('/api/users', {
-//     method: 'POST',
-//     body: JSON.stringify({ name, active }),
-//   });
-
-//   const parsedResponse = await parseFetchResponse(response);
-//   return parsedResponse.user;
-// };
+/**
+ * It makes a POST request to the endpoint, and returns the student object that was created
+ * @returns The user object
+ */
+export const addStudent = async (student) => {
+  const response = await fetch(baseURL + 'createstudent', {
+    method: 'POST',
+    body: JSON.stringify(student),
+  });
+  const parsedResponse = await parseFetchResponse(response);
+  return parsedResponse.user;
+};
 
 // /**
 //  * It makes a PUT request to the /api/users endpoint with the id of the user to
