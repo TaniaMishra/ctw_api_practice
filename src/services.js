@@ -18,9 +18,11 @@ export const getStudents = async () => {
  * @returns The student object
  */
 export const addStudent = async (student) => {
-  
+  console.log(JSON.stringify(student));
+
   const response = await fetch(baseURL + 'createstudent', {
     method: 'POST',
+    headers: { 'Content-Type': 'application/json'},
     body: JSON.stringify(student),
   });
   const parsedResponse = await parseFetchResponse(response);
