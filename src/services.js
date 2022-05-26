@@ -15,32 +15,32 @@ export const getStudents = async () => {
 
 /**
  * It makes a POST request to the endpoint, and returns the student object that was created
- * @returns The user object
+ * @returns The student object
  */
 export const addStudent = async (student) => {
+  
   const response = await fetch(baseURL + 'createstudent', {
     method: 'POST',
     body: JSON.stringify(student),
   });
   const parsedResponse = await parseFetchResponse(response);
-  return parsedResponse.user;
+  return parsedResponse;
 };
 
-// /**
-//  * It makes a PUT request to the /api/users endpoint with the id of the user to
-//  * update
-//  * @param id - The id of the user to update
-//  * @returns The response from the server.
-//  */
-// export const updateUserActive = async (id) => {
-//   const response = await fetch('/api/users', {
-//     method: 'PUT',
-//     body: JSON.stringify({ id }),
-//   });
+/**
+ * It makes a PUT request to the endpoint with the id of the user to update
+ * @param id - The id of the user to update
+ * @returns The response from the server.
+ */
+export const updateStudentActive = async (id) => {
+  const response = await fetch(baseURL + 'updatestudent', {
+    method: 'PUT',
+    body: JSON.stringify({ id }),
+  });
 
-//   const parsedResponse = await parseFetchResponse(response);
-//   return parsedResponse;
-// };
+  const parsedResponse = await parseFetchResponse(response);
+  return parsedResponse;
+};
 
 // /**
 //  * It sends a DELETE request to the server with the id of the user to delete

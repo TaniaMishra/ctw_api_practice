@@ -18,6 +18,7 @@ const StudentsList = props => {
             <ul className="students">
                 {activeStudents.map(student =>
                     <li key={student.id}>
+                        <p>{student.id}</p>
                         <p>{student.studentLastName}, {student.studentFirstName}</p>
                         <p>Date of Birth: {student.studentDateofBirth}</p>
                         <p>Email: {student.studentEmail}</p>
