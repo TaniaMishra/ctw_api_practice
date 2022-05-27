@@ -16,24 +16,45 @@ function App() {
     setStudentsList(response);
   };
 
-  async function addStudentHandler2(firstName, lastName, birthDate, phone, email) {
+  async function addStudentHandler(firstName, lastName, birthDate, phone, email) {
     const newStudent = {
       StudentFirstName: firstName,
       StudentLastName: lastName,
-      StudentDateOfBirth: birthDate,//new Date(birthDate),
+      StudentDateOfBirth: birthDate,
       StudentCellPhone: phone,
       StudentEmail: email
     };
     
-    const response = await addStudent(newStudent);
-    console.log("Add studentHandler2 method" + response);
+    await addStudent(newStudent);
+   
     refreshStudents();
-    // setStudentsList((prevStudentsList) => {
-    //   return [...prevStudentsList, newStudent];
-    // });
+  
   }
 
-  // async function addStudentHandler(firstName, lastName, birthDate, phone, email) {
+  
+  function archiveStudentHandler(studentId) {
+
+  }
+  //   const studentIndex = studentsList.findIndex(student =>
+  //     student.id === studentId
+  //   );
+  //   const updatedStudents = [...studentsList];
+  //   updatedStudents[studentIndex].active = false;
+  //   setStudentsList(updatedStudents);
+  // }
+
+  return (
+    <div>
+      <AddStudent onAddStudent={addStudentHandler}></AddStudent>
+      <StudentsList students={studentsList} archiveStudent={archiveStudentHandler}></StudentsList>
+    </div>
+  );
+}
+
+export default App;
+
+
+// async function addStudentHandler(firstName, lastName, birthDate, phone, email) {
   //    const newStudent = {
   //      StudentFirstName: firstName,
   //      StudentLastName: lastName,
@@ -57,22 +78,3 @@ function App() {
   //   //   return [...prevStudentsList, newStudent];
   //   // });
   // }
-
-  function deleteStudentHandler(studentId) {
-    const studentIndex = studentsList.findIndex(student =>
-      student.id === studentId
-    );
-    const updatedStudents = [...studentsList];
-    updatedStudents[studentIndex].active = false;
-    setStudentsList(updatedStudents);
-  }
-
-  return (
-    <div>
-      <AddStudent onAddStudent={addStudentHandler2}></AddStudent>
-      <StudentsList students={studentsList} deleteStudent={deleteStudentHandler}></StudentsList>
-    </div>
-  );
-}
-
-export default App;
