@@ -5,11 +5,13 @@ import './StudentsList.css'
 
 const StudentsList = props => {
     
-    let activeStudents = props.students.filter(student =>
-        student.active === true
-    );
+    // let activeStudents = props.students.filter(student =>
+    //     student.active === true
+    // );
 
-    function deleteHandler(event) {
+    let activeStudents = props.students;
+
+    function deleteStudentHandler(event) {
         props.deleteStudent(event.target.value);
     }
 
@@ -23,7 +25,7 @@ const StudentsList = props => {
                         <p>Date of Birth: {student.studentDateofBirth}</p>
                         <p>Email: {student.studentEmail}</p>
                         <p>Phone Number: {student.studentHomePhone}</p>
-                        <Button clickHandler={deleteHandler} value={student.id}>Delete</Button>
+                        <Button clickHandler={deleteStudentHandler} value={student.id}>Delete</Button>
                     </li>
                 )}
             </ul>
