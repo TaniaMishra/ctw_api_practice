@@ -7,9 +7,10 @@ const baseURL = "https://dev-lead2change-ctw.azurewebsites.net/example/";
  * @returns An array of students.
  */
 export const getStudents = async () => {
-  const response = await fetch(baseURL + 'getstudents');
-  console.log(response);
+  const response = await fetch(baseURL + 'getstudents', {method: 'GET'});
+  
   const parsedResponse = await parseFetchResponse(response);
+  console.log(parsedResponse);
   return parsedResponse;
 };
 
@@ -17,17 +18,29 @@ export const getStudents = async () => {
  * It makes a POST request to the endpoint, and returns the student object that was created
  * @returns The student object
  */
-export const addStudent = async (student) => {
-  console.log(JSON.stringify(student));
-
+ export const addStudent = async (student) => {
   const response = await fetch(baseURL + 'createstudent', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json'},
+    headers: {
+        'Accept': 'application/json, text/plain',
+        'Content-Type': 'application/json'
+    },
     body: JSON.stringify(student),
   });
   const parsedResponse = await parseFetchResponse(response);
   return parsedResponse;
 };
+// export const addStudent = async (student) => {
+//   //console.log(JSON.stringify(student));
+
+//   const response = await fetch(baseURL + 'createstudent', {
+//     method: 'POST',
+//    headers: { 'Content-Type': 'application/json'},
+//     body: JSON.stringify(student),
+//   });
+//   const parsedResponse = await parseFetchResponse(response);
+//   return parsedResponse;
+// };
 
 /**
  * It makes a PUT request to the endpoint with the id of the user to update

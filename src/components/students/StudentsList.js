@@ -9,8 +9,10 @@ const StudentsList = props => {
         student.active === true
     );
 
-    function deleteHandler(event) {
-        props.deleteStudent(event.target.value);
+    
+
+    function archiveStudentHandler(event) {
+        props.archiveStudent(event.target.value);
     }
 
     return (
@@ -20,10 +22,10 @@ const StudentsList = props => {
                     <li key={student.id}>
                         <p>{student.id}</p>
                         <p>{student.studentLastName}, {student.studentFirstName}</p>
-                        <p>Date of Birth: {student.studentDateofBirth}</p>
+                        <p>Date of Birth: {student.studentDateOfBirth}</p>
                         <p>Email: {student.studentEmail}</p>
                         <p>Phone Number: {student.studentHomePhone}</p>
-                        <Button clickHandler={deleteHandler} value={student.id}>Delete</Button>
+                        <Button clickHandler={archiveStudentHandler} value={student.id}>Delete</Button>
                     </li>
                 )}
             </ul>

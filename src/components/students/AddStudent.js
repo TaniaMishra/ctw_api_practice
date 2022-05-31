@@ -15,6 +15,7 @@ const AddStudent = props => {
 
     function addStudentHandler(event) {
         event.preventDefault();
+       
         // if (enteredStudentname.trim().length === 0 || enteredAge.trim().length === 0) {
         //     setError({
         //         title: "Invalid input",
@@ -65,7 +66,7 @@ const AddStudent = props => {
                 <label htmlFor="lastName">Last Name</label>
                 <input id="lastName" type="text" value={enteredLastName} onChange={lastNameChangeHandler}></input>
                 <label htmlFor="birthDate">Date of Birth</label>
-                <input id="birthDate" type="text" value={enteredBirthDate} onChange={birthDateChangeHandler}></input>
+                <input id="birthDate" type="date" value={enteredBirthDate} onChange={birthDateChangeHandler}></input>
                 <label htmlFor="phone">Phone Number</label>
                 <input id="phone" type="text" value={enteredPhoneNumber} onChange={phoneNumberChangeHandler}></input>
                 <label htmlFor="email">Email</label>
