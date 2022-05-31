@@ -7,7 +7,7 @@ import {getStudents, addStudent, updateStudent} from './services.js';
 function App() {
   const [studentsList, setStudentsList] = useState([]);
   const [updateModal, setUpdateModal] = useState(false);
-  const [updateStudent, setUpdateStudent] = useState();
+  const [studentToUpdate, setStudentToUpdate] = useState();
 
   useEffect(() => {
     refreshStudents();
@@ -48,7 +48,6 @@ function App() {
    
     refreshStudents();
     closeUpdateModal();
-  
   }
   
   function archiveStudentHandler(studentId) {
@@ -68,13 +67,13 @@ function App() {
     const studentIndex = studentsList.findIndex(student =>
       student.id === studentId
     );
-    setUpdateStudent(studentsList[studentIndex]);
+    setStudentToUpdate(studentsList[studentIndex]);
     setUpdateModal(true);
   }
 
   return (
     <div>
-      {updateModal && <Modal closeModal={closeUpdateModal} student={updateStudent} onUpdateStudent={updateStudentHandler}></Modal>}
+      {updateModal && <Modal closeModal={closeUpdateModal} student={studentToUpdate} onUpdateStudent={updateStudentHandler}></Modal>}
       <AddStudent onAddStudent={addStudentHandler}></AddStudent>
       <StudentsList students={studentsList} archiveStudent={archiveStudentHandler} updateStudent={openUpdateModal}></StudentsList>
     </div>

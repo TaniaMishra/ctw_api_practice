@@ -26,7 +26,7 @@ const StudentsList = props => {
                     <li key={student.id}>
                         <p>{student.id}</p>
                         <p>{student.studentLastName}, {student.studentFirstName}</p>
-                        <p>Date of Birth: {student.studentDateOfBirth}</p>
+                        <p>Date of Birth: {student.studentDateOfBirth.substring(0,10)}</p>
                         <p>Email: {student.studentEmail}</p>
                         <p>Phone Number: {student.studentHomePhone}</p>
                         <Button clickHandler={archiveStudentHandler} value={student.id}>Delete</Button>

@@ -24,6 +24,10 @@ const Modal = props => {
         if (student.studentLastName != null) {
             setEnteredLastName(student.studentLastName);
         }
+        if (student.studentDateOfBirth != null) {
+            const date =  student.studentDateOfBirth.substring(0,10);
+            setEnteredBirthDate(date);
+        }
         if (student.studentCellPhone != null) {
             setEnteredPhoneNumber(student.studentCellPhone);
         }
@@ -72,7 +76,7 @@ const Modal = props => {
                         <label htmlFor="lastName">Last Name</label>
                         <input id="lastName" type="text" value={enteredLastName} onChange={lastNameChangeHandler}></input>
                         <label htmlFor="birthDate">Date of Birth</label>
-                        <input id="birthDate" type="date" value={enteredBirthDate} onChange={birthDateChangeHandler}></input>
+                        <input id="birthDate" type="text" value={enteredBirthDate} onChange={birthDateChangeHandler}></input>
                         <label htmlFor="phone">Phone Number</label>
                         <input id="phone" type="text" value={enteredPhoneNumber} onChange={phoneNumberChangeHandler}></input>
                         <label htmlFor="email">Email</label>

@@ -16,6 +16,7 @@ export const getStudents = async () => {
 
 /**
  * It makes a POST request to the endpoint, and returns the student object that was created
+ * @param student - The student to add
  * @returns The student object
  */
  export const addStudent = async (student) => {
@@ -32,13 +33,13 @@ export const getStudents = async () => {
 };
 
 /**
- * It makes a PUT request to the endpoint with the id of the user to update
- * @param id - The id of the user to update
+ * It makes a PUT request to the endpoint with the updated student
+ * @param student - The student to update
  * @returns The response from the server.
  */
 export const updateStudent = async (student) => {
   const response = await fetch(baseURL + 'updatestudent', {
-    method: 'PUT',
+    method: 'POST',
     headers: {
       'Accept': 'application/json, text/plain',
       'Content-Type': 'application/json'
