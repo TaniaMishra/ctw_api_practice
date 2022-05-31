@@ -30,27 +30,20 @@ export const getStudents = async () => {
   const parsedResponse = await parseFetchResponse(response);
   return parsedResponse;
 };
-// export const addStudent = async (student) => {
-//   //console.log(JSON.stringify(student));
-
-//   const response = await fetch(baseURL + 'createstudent', {
-//     method: 'POST',
-//    headers: { 'Content-Type': 'application/json'},
-//     body: JSON.stringify(student),
-//   });
-//   const parsedResponse = await parseFetchResponse(response);
-//   return parsedResponse;
-// };
 
 /**
  * It makes a PUT request to the endpoint with the id of the user to update
  * @param id - The id of the user to update
  * @returns The response from the server.
  */
-export const updateStudentActive = async (id) => {
+export const updateStudent = async (student) => {
   const response = await fetch(baseURL + 'updatestudent', {
     method: 'PUT',
-    body: JSON.stringify({ id }),
+    headers: {
+      'Accept': 'application/json, text/plain',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(student),
   });
 
   const parsedResponse = await parseFetchResponse(response);

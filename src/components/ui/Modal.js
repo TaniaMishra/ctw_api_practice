@@ -18,16 +18,16 @@ const Modal = props => {
     function initializeForm() {
         const student = props.student;
         console.log(student);
-        if (props.student.firstName != null) {
+        if (student.studentFirstName != null) {
             setEnteredFirstName(student.studentFirstName);
         }
-        if (props.student.firstName != null) {
+        if (student.studentLastName != null) {
             setEnteredLastName(student.studentLastName);
         }
-        if (props.student.firstName != null) {
+        if (student.studentCellPhone != null) {
             setEnteredPhoneNumber(student.studentCellPhone);
         }
-        if (props.student.firstName != null) {
+        if (student.studentEmail != null) {
             setEnteredEmail(student.studentEmail);
         }
     }
@@ -48,6 +48,16 @@ const Modal = props => {
         setEnteredEmail(event.target.value);
     }
 
+    function updateHandler(event) {
+        event.preventDefault();
+        props.onUpdateStudent(props.student.id, enteredFirstName, enteredLastName, enteredBirthDate, enteredPhoneNumber, enteredEmail);
+        setEnteredFirstName("");
+        setEnteredLastName("");
+        setEnteredBirthDate("");
+        setEnteredPhoneNumber("");
+        setEnteredEmail("");
+    }
+
     return (
         <div>
             <div className="backdrop" onClick={props.closeModal} />
@@ -57,14 +67,19 @@ const Modal = props => {
                         <h2>Update Student</h2>
                     </header>
                     <div className="content">
-                        <input type="text" value={enteredFirstName} onChange={firstNameChangeHandler}></input>
-                        <input type="text" value={enteredLastName} onChange={lastNameChangeHandler}></input>
-                        <input type="text" value={enteredPhoneNumber} onChange={phoneNumberChangeHandler}></input>
-                        <input type="text" value={enteredEmail} onChange={emailChangeHandler}></input>
-
+                        <label htmlFor="firstName">First Name</label>
+                        <input id="firstName" type="text" value={enteredFirstName} onChange={firstNameChangeHandler}></input>
+                        <label htmlFor="lastName">Last Name</label>
+                        <input id="lastName" type="text" value={enteredLastName} onChange={lastNameChangeHandler}></input>
+                        <label htmlFor="birthDate">Date of Birth</label>
+                        <input id="birthDate" type="date" value={enteredBirthDate} onChange={birthDateChangeHandler}></input>
+                        <label htmlFor="phone">Phone Number</label>
+                        <input id="phone" type="text" value={enteredPhoneNumber} onChange={phoneNumberChangeHandler}></input>
+                        <label htmlFor="email">Email</label>
+                        <input id="email" type="text" value={enteredEmail} onChange={emailChangeHandler}></input>
                     </div>
                     <footer className="actions">
-                        <Button clickHandler={props.closeModal}>Update</Button>
+                        <Button clickHandler={updateHandler}>Update</Button>
                     </footer>
                 </Card>
             </div>

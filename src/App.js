@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import AddStudent from "./components/students/AddStudent.js"
 import StudentsList from "./components/students/StudentsList.js"
 import Modal from "./components/ui/Modal.js";
-import {getStudents, addStudent} from './services.js';
+import {getStudents, addStudent, updateStudent} from './services.js';
 
 function App() {
   const [studentsList, setStudentsList] = useState([]);
@@ -34,6 +34,22 @@ function App() {
   
   }
 
+  async function updateStudentHandler(id, firstName, lastName, birthDate, phone, email) {
+    const updatedStudent = {
+      id: id,
+      StudentFirstName: firstName,
+      StudentLastName: lastName,
+      StudentDateOfBirth: birthDate,
+      StudentCellPhone: phone,
+      StudentEmail: email
+    };
+    console.log(updatedStudent);
+    await updateStudent(updatedStudent);
+   
+    refreshStudents();
+    closeUpdateModal();
+  
+  }
   
   function archiveStudentHandler(studentId) {
   //   const studentIndex = studentsList.findIndex(student =>
@@ -58,7 +74,7 @@ function App() {
 
   return (
     <div>
-      {updateModal && <Modal closeModal={closeUpdateModal} student={updateStudent}></Modal>}
+      {updateModal && <Modal closeModal={closeUpdateModal} student={updateStudent} onUpdateStudent={updateStudentHandler}></Modal>}
       <AddStudent onAddStudent={addStudentHandler}></AddStudent>
       <StudentsList students={studentsList} archiveStudent={archiveStudentHandler} updateStudent={openUpdateModal}></StudentsList>
     </div>
