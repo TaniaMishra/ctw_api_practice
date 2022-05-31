@@ -15,6 +15,10 @@ const StudentsList = props => {
         props.archiveStudent(event.target.value);
     }
 
+    function updateStudentModal(event) {
+        props.updateStudent(event.target.value);
+    }
+
     return (
         <Card>
             <ul className="students">
@@ -26,6 +30,7 @@ const StudentsList = props => {
                         <p>Email: {student.studentEmail}</p>
                         <p>Phone Number: {student.studentHomePhone}</p>
                         <Button clickHandler={archiveStudentHandler} value={student.id}>Delete</Button>
+                        <Button clickHandler={updateStudentModal} value={student.id}>Update</Button>
                     </li>
                 )}
             </ul>

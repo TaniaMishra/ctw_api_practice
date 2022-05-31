@@ -1,10 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import AddStudent from "./components/students/AddStudent.js"
 import StudentsList from "./components/students/StudentsList.js"
+import Modal from "./components/ui/Modal.js";
 import {getStudents, addStudent} from './services.js';
 
 function App() {
   const [studentsList, setStudentsList] = useState([]);
+  const [updateModal, setUpdateModal] = useState(false);
+  const [updateStudent, setUpdateStudent] = useState();
 
   useEffect(() => {
     refreshStudents();
@@ -33,20 +36,31 @@ function App() {
 
   
   function archiveStudentHandler(studentId) {
-
-  }
   //   const studentIndex = studentsList.findIndex(student =>
   //     student.id === studentId
   //   );
   //   const updatedStudents = [...studentsList];
   //   updatedStudents[studentIndex].active = false;
   //   setStudentsList(updatedStudents);
-  // }
+  }
+
+  function closeUpdateModal() {
+    setUpdateModal(false);
+  }
+
+  function openUpdateModal(studentId) {
+    const studentIndex = studentsList.findIndex(student =>
+      student.id === studentId
+    );
+    setUpdateStudent(studentsList[studentIndex]);
+    setUpdateModal(true);
+  }
 
   return (
     <div>
+      {updateModal && <Modal closeModal={closeUpdateModal} student={updateStudent}></Modal>}
       <AddStudent onAddStudent={addStudentHandler}></AddStudent>
-      <StudentsList students={studentsList} archiveStudent={archiveStudentHandler}></StudentsList>
+      <StudentsList students={studentsList} archiveStudent={archiveStudentHandler} updateStudent={openUpdateModal}></StudentsList>
     </div>
   );
 }
