@@ -28,7 +28,7 @@ const StudentsList = props => {
                         <p>{student.studentLastName}, {student.studentFirstName}</p>
                         <p>Date of Birth: {student.studentDateOfBirth.substring(0,10)}</p>
                         <p>Email: {student.studentEmail}</p>
-                        <p>Phone Number: {student.studentHomePhone}</p>
+                        <p>Phone Number: {student.studentCellPhone}</p>
                         <Button clickHandler={archiveStudentHandler} value={student.id}>Delete</Button>
                         <Button clickHandler={updateStudentModal} value={student.id}>Update</Button>
                     </li>

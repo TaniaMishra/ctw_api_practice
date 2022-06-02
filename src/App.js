@@ -41,7 +41,8 @@ function App() {
       StudentLastName: lastName,
       StudentDateOfBirth: birthDate,
       StudentCellPhone: phone,
-      StudentEmail: email
+      StudentEmail: email,
+      Active: true
     };
     console.log(updatedStudent);
     await updateStudent(updatedStudent);
@@ -50,13 +51,16 @@ function App() {
     closeUpdateModal();
   }
   
-  function archiveStudentHandler(studentId) {
-  //   const studentIndex = studentsList.findIndex(student =>
-  //     student.id === studentId
-  //   );
-  //   const updatedStudents = [...studentsList];
-  //   updatedStudents[studentIndex].active = false;
-  //   setStudentsList(updatedStudents);
+  async function archiveStudentHandler(studentId) {
+    const studentIndex = studentsList.findIndex(student =>
+      student.id === studentId
+    );
+    const updatedStudent = {
+      id: studentId,
+      Active: false
+    };
+    await updateStudent(updatedStudent);
+    refreshStudents();
   }
 
   function closeUpdateModal() {

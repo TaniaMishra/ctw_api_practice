@@ -33,13 +33,13 @@ export const getStudents = async () => {
 };
 
 /**
- * It makes a PUT request to the endpoint with the updated student
+ * It makes a POST request to the endpoint with the updated student
  * @param student - The student to update
  * @returns The response from the server.
  */
-export const updateStudent = async (student) => {
-  const response = await fetch(baseURL + 'updatestudent', {
-    method: 'POST',
+ export const updateStudent = async (student) => {
+  const response = await fetch(baseURL + 'updatestudent/' + student.id, {
+    method: 'PUT',
     headers: {
       'Accept': 'application/json, text/plain',
       'Content-Type': 'application/json'
