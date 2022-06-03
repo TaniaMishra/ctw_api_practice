@@ -15,21 +15,6 @@ const AddStudent = props => {
 
     function addStudentHandler(event) {
         event.preventDefault();
-       
-        // if (enteredStudentname.trim().length === 0 || enteredAge.trim().length === 0) {
-        //     setError({
-        //         title: "Invalid input",
-        //         message: "Please enter a valid name and age (non-empty values)."
-        //     });
-        //     return;
-        // }
-        // if (+enteredAge < 1) {
-        //     setError({
-        //         title: "Invalid age",
-        //         message: "Please enter a valid age (age > 0)."
-        //     });
-        //     return;
-        // }
         props.onAddStudent(enteredFirstName, enteredLastName, enteredBirthDate, enteredPhoneNumber, enteredEmail);
         setEnteredFirstName("");
         setEnteredLastName("");

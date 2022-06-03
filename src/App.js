@@ -52,9 +52,6 @@ function App() {
   }
   
   async function archiveStudentHandler(studentId) {
-    const studentIndex = studentsList.findIndex(student =>
-      student.id === studentId
-    );
     const updatedStudent = {
       id: studentId,
       Active: false
